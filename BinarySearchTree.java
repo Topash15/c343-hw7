@@ -26,7 +26,17 @@ public class BinarySearchTree
     {
       	// your code goes here
         // create a new node with parameters n, m, b and insert the new node
-        // into subtree t so that the tree is maintained as a binary search tree
+        BinaryNode newNode = new BinaryNode(n, m, b);
+
+        if(t == null){
+            return newNode;
+        } else if ( newNode.account_number < t.account_number){
+            t.left = insert_to_subtree(n, m, b, t);
+        }  else if (newNode.account_number > t.account_number){
+            t.right = insert_to_subtree(n, m, b, t);
+        }
+
+        return t;
         // return the modified subtree t
     }
 	
@@ -34,6 +44,16 @@ public class BinarySearchTree
     {
       	// your code goes here
         // remove the node with account_number equals n from subtree t.
+
+        if(t == null){
+            return t;
+        } else if ( n < t.account_number){
+            t.left = remove_from_subtree(n, t);
+        }  else if (n > t.account_number){
+            t.right = remove_from_subtree(n, t);
+        }
+
+        return t;
         // return the possibily-modified subtree t
     }
 	
